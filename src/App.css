@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+
+#inputBox{
+  text-align: center;
+  width: 20%;
+  height: 50px;
+  font-size: 24px;
+  border-radius: 10px;
+}
