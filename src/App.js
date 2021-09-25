@@ -249,7 +249,6 @@ function App() {
   var [flagOfCountry, findFlag] = useState("");
   
   function flagFinder(event){
-  
     flagOfCountry = "The flag is of " +  flagList[event.target.value];
     findFlag(flagOfCountry);
   }
