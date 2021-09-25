@@ -256,6 +256,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <div className="content"></div>
         <h1>Find the name of country with their Flag</h1>
         <input id="inputBox" placeholder="--type flag icon here--" onChange={flagFinder}/>
         <p>{flagOfCountry}</p>
