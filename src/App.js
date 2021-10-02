@@ -2,7 +2,7 @@ import './App.css';
 import { useState } from 'react';
 
 
-var flagList = {
+var flagDict = {
 "🇦🇩": "Andorra",
 "🇦🇪" : "United Arab Emirates",
 "🇦🇫" : "Afghanistan",
@@ -245,12 +245,22 @@ var flagList = {
 "🏴󠁧󠁢󠁷󠁬󠁳󠁿" : "Wales"
 }
 
+var flagList = Object.keys(flagDict)
+
 function App() {
   var [flagOfCountry, findFlag] = useState("");
   
   function flagFinder(event){
-    flagOfCountry = "The flag is of " +  flagList[event.target.value];
+    flagOfCountry = flagDict[event.target.value];
+    if (flagOfCountry === undefined){
+      flagOfCountry = "We don't have this flag in our database"
+    }
     findFlag(flagOfCountry);
+  }
+
+  function flagClick(flag){
+    var flagOfCountry = flagDict[flag];
+    findFlag(flagOfCountry)
   }
 
   return (
@@ -260,6 +270,32 @@ function App() {
         <h1>Find the name of country with their Flag</h1>
         <input id="inputBox" placeholder="--type flag icon here--" onChange={flagFinder}/>
         <p>{flagOfCountry}</p>
+        <h3>Flags that we have</h3>
+        <ol>
+          {
+            flagList.map(flag =>{
+              return <li onClick = { () => {flagClick(flag)}} style={{
+                listStyle : "none",
+                display : "inline",
+                fontSize : "2rem",
+                margin : "1rem",
+                cursor : "pointer" 
+              }}>{flag}</li>
+            })
+          }
+        </ol>
+
+            <footer>
+              <p>
+                  <a target="_blank" href="https://www.linkedin.com/in/ashutoshdash1999/">linkedin</a>
+                  &nbsp;
+                  <a target="_blank" href="https://twitter.com/ashutoshdash99">twitter</a>
+                  &nbsp;
+                  <a target="_blank" href="https://github.com/AshutoshDash1999/">github</a>
+                  &nbsp;
+                  <a target="_blank" href="mailto:dashashutosh1999@gmail.com">gmail</a>
+              </p>
+          </footer>
       </header>
     </div>
   );
